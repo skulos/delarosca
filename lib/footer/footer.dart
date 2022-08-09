@@ -1,41 +1,41 @@
 import 'package:delarosca/copyright/copyright.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-// final Uri _url = Uri.parse('https://flutter.dev');
 final Uri _facebookURL =
-    Uri.parse('https://www.facebook.com/De-La-Rosca-Interiors-100362344702846');
+Uri.parse('https://www.facebook.com/De-La-Rosca-Interiors-100362344702846');
 
-// String? encodeQueryParameters(Map<String, String> params) {
-//   return params.entries
-//       .map((MapEntry<String, String> e) =>
-//           '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-//       .join('&');
-// }
+final Uri _instragramURL = Uri.parse('https://www.instagram.com/');
 
-// ···
+final Uri _pinterestURL = Uri.parse('https://za.pinterest.com/');
+
 final Uri _emailLaunchUri = Uri(
   scheme: 'mailto',
   path: 'sanet@delaroscainterior.co.za',
-  // query: encodeQueryParameters(<String, String>{
-  //   'subject': 'Example Subject & Symbols are allowed!',
-  // }),
   query: 'subject=Delarosca Interior Customer Query',
 );
 
-const _contactHeader = "CONTACT US";
-const _addressHeader = "VISIT US";
-const _tradingHeader = "TRADING HOURS";
-const _followHeader = "FOLLOW US";
+const String _facebookIcon = 'assets/facebook.png';
+const String _instagramIcon = 'assets/instagram.png';
+const String _pinterestIcon = 'assets/pinterest.png';
 
-const _contactText = """sanet@delarosca.co.za
+const String _contactHeader = "CONTACT US";
+const String _addressHeader = "VISIT US";
+const String _tradingHeader = "TRADING HOURS";
+const String _followHeader = "FOLLOW US";
+
+const String _contactText = """sanet@delarosca.co.za
 +27 71 470 6950""";
 
-const _addressText = """61 Ford Street, Malmesbury,
+// const String _addressText = """61 Ford Street, Malmesbury,
+// Western Cape, 7300""";
+
+const String _addressText = """118 Arcadia Street, Malmesbury,
 Western Cape, 7300""";
 
-const _tradingText = """Monday - Saturday: 08h00 - 17h00
+const String _tradingText = """Monday - Saturday: 08h00 - 17h00
 Sunday: 08h00 - 15h00""";
 
 class Footer extends StatelessWidget {
@@ -50,7 +50,31 @@ class Footer extends StatelessWidget {
     );
   }
 
-  Widget FooterSectionIcon(String header) {
+  Widget _iconWidget(String file, Uri link) {
+    return ElevatedButton(
+      onPressed: () {
+        _launchUrl(link);
+      },
+      style: ElevatedButton.styleFrom(
+        primary:Colors.grey.shade600,
+        elevation: 0,
+        shape: const CircleBorder(),
+      ),
+      // child: ClipRRect(
+      //   borderRadius: BorderRadius.circular(100),
+        // child: SvgPicture.asset(file),
+        child: SizedBox(
+          width: 50,
+          height: 50,
+          child: Image(
+            image: AssetImage(file),
+          // ),
+      ),
+        ),
+    );
+  }
+
+  Widget _footerSectionIcon(String header) {
     return Container(
       padding: const EdgeInsets.all(15),
       child: Column(
@@ -61,20 +85,23 @@ class Footer extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FlutterSocialButton(
-                onTap: () {
-                  _launchUrl(_facebookURL);
-                },
-                mini: true,
-                buttonType: ButtonType.facebook,
-              ),
-              FlutterSocialButton(
-                onTap: () {
-                  _launchUrl(_emailLaunchUri);
-                },
-                mini: true,
-                buttonType: ButtonType.email,
-              ),
+              // FlutterSocialButton(
+              //   onTap: () {
+              //     _launchUrl(_facebookURL);
+              //   },
+              //   mini: true,
+              //   buttonType: ButtonType.facebook,
+              // ),
+              // FlutterSocialButton(
+              //   onTap: () {
+              //     _launchUrl(_emailLaunchUri);
+              //   },
+              //   mini: true,
+              //   buttonType: ButtonType.email,
+              // ),
+              _iconWidget(_facebookIcon, _facebookURL),
+              _iconWidget(_instagramIcon,_instragramURL),
+              _iconWidget(_pinterestIcon,_pinterestURL),
             ],
           ),
         ],
@@ -112,7 +139,7 @@ class Footer extends StatelessWidget {
                   footerSection(_contactHeader, _contactText),
                   footerSection(_addressHeader, _addressText),
                   footerSection(_tradingHeader, _tradingText),
-                  FooterSectionIcon(_followHeader),
+                  _footerSectionIcon(_followHeader),
                 ],
               ),
             ],

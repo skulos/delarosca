@@ -19,15 +19,31 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Stack(alignment: Alignment.bottomRight, children: <Widget>[
-      Container(
-        height: 800,
-        width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage('assets/header_background.jpg'),
+      Row(
+        children: [
+          Container(
+            height: 800,
+            width: MediaQuery.of(context).size.width/2,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage('assets/header_background_2.jpg'),
+                // image: AssetImage('assets/4.jpg'),
+              ),
+            ),
           ),
-        ),
+          Container(
+            height: 800,
+            width: MediaQuery.of(context).size.width/2,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage('assets/header_background.jpg'),
+                // image: AssetImage('assets/4.jpg'),
+              ),
+            ),
+          ),
+        ],
       ),
       RichText(
         text: TextSpan(

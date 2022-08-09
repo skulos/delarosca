@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Bar extends StatelessWidget {
+  // TODO: add text logo
+
   final Uri _facebookURL = Uri.parse(
       'https://www.facebook.com/De-La-Rosca-Interiors-100362344702846');
 
@@ -12,7 +14,7 @@ class Bar extends StatelessWidget {
     }
   }
 
-  Widget textWidget(String text) {
+  Widget textWidget(String text, {double fontSize = 18}) {
     return Text(
       text,
       textAlign: TextAlign.center,
@@ -20,7 +22,7 @@ class Bar extends StatelessWidget {
         textStyle: TextStyle(
           letterSpacing: 1.0,
           color: Colors.grey.shade100,
-          fontSize: 18,
+          fontSize: fontSize,
         ),
       ),
     );
@@ -28,21 +30,32 @@ class Bar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double spacingWidth = screenWidth / 15;
+
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 200),
+      padding: EdgeInsets.symmetric(horizontal: spacingWidth),
       color: Colors.black87,
       height: 150,
-      width: MediaQuery.of(context).size.width,
+      width: screenWidth,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Logo and name
-          ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: const Image(
-              image: AssetImage('assets/logo.jpg'),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: const Image(
+                  image: AssetImage('assets/logo.jpg'),
+                ),
+              ),
+              const SizedBox(width: 20),
+              textWidget('De La Rosca Interiors', fontSize: 30),
+            ],
           ),
           Row(
             children: [
