@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 // construction page for blog
 // fix header photo
 
+
+
 void main() {
   runApp(const Delarosca());
 }
@@ -28,34 +30,38 @@ class Delarosca extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: _nameOfSite,
-      theme: ThemeData(
-        primaryColor: Colors.black87,
-        // scaffoldBackgroundColor: Colors.black87,
-      ),
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                spacer(),
-                Bar(),
-                spacer(),
-                Header(),
-                // spacer(),
-                Body(),
-                // spacer(),
-                Footer(),
-              ],
-            ),
+  Widget website() {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              spacer(),
+              Bar(),
+              spacer(),
+              Header(),
+              // spacer(),
+              Body(),
+              // spacer(),
+              Footer(),
+            ],
           ),
         ),
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: _nameOfSite,
+        theme: ThemeData(
+          primaryColor: Colors.black87,
+          // scaffoldBackgroundColor: Colors.black87,
+        ),
+        home: website(),
     );
   }
 }
