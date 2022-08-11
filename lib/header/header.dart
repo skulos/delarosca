@@ -18,8 +18,8 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Stack(alignment: Alignment.bottomRight, children: <Widget>[
-      Row(
+    //return Stack(alignment: Alignment.bottomRight, children: <Widget>[
+     return Row(
         children: [
           Container(
             height: 800,
@@ -44,28 +44,28 @@ class Header extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      RichText(
-        text: TextSpan(
-          children: [
-            const TextSpan(text: 'Photo by '),
-            TextSpan(
-                text: 'R ARCHITECTURE',
-                style: const TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()..onTap = () {
-                  _launchUrl(rarchitectureURL);
-                }),
-            const TextSpan(text: ' on '),
-            TextSpan(
-                text: ' Unsplash ',
-                style: const TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()..onTap = () {
-                  _launchUrl(unsplashURL);
-                }),
-          ],
-        ),
-      ),
-    ]);
+      );
+    //   RichText(
+    //     text: TextSpan(
+    //       children: [
+    //         const TextSpan(text: 'Photo by '),
+    //         TextSpan(
+    //             text: 'R ARCHITECTURE',
+    //             style: const TextStyle(color: Colors.blue),
+    //             recognizer: TapGestureRecognizer()..onTap = () {
+    //               _launchUrl(rarchitectureURL);
+    //             }),
+    //         const TextSpan(text: ' on '),
+    //         TextSpan(
+    //             text: ' Unsplash ',
+    //             style: const TextStyle(color: Colors.blue),
+    //             recognizer: TapGestureRecognizer()..onTap = () {
+    //               _launchUrl(unsplashURL);
+    //             }),
+    //       ],
+    //     ),
+    //   ),
+    // ]);
   }
 }
 

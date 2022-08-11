@@ -60,38 +60,28 @@ class Bar extends StatelessWidget {
           Row(
             children: [
               // Blog
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(24),
-                    ),
-                    onPressed: () => {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        // color: Colors.black54,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Icon(Icons.book_outlined, color: Colors.black),
-                    ),
-                  ),
-                  // Text(
-                  //   'BLOG',
-                  //   textAlign: TextAlign.center,
-                  //   style: GoogleFonts.cinzel(
-                  //     textStyle: TextStyle(
-                  //       color: Colors.grey.shade100,
-                  //       fontSize: 18,
-                  //     ),
-                  //   ),
-                  // ),
-                  textWidget('BLOG'),
-                ],
-              ),
+              // Column(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     ElevatedButton(
+              //       style: ElevatedButton.styleFrom(
+              //         primary: Colors.white,
+              //         shape: const CircleBorder(),
+              //         padding: const EdgeInsets.all(24),
+              //       ),
+              //       onPressed: () => {},
+              //       child: Container(
+              //         decoration: BoxDecoration(
+              //           // color: Colors.black54,
+              //           borderRadius: BorderRadius.circular(100),
+              //         ),
+              //         child: const Icon(Icons.book_outlined, color: Colors.black),
+              //       ),
+              //     ),
+              //     textWidget('BLOG'),
+              //   ],
+              // ),
 
               const SizedBox(width: 20),
 

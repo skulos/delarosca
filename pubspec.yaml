@@ -1,5 +1,5 @@
 name: delarosca
-description: A new Flutter project.
+description: Welcome to De La Rosca Interiors!
 
 publish_to: 'none'
 
@@ -12,9 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  random_color: ^1.0.6-nullsafety
   cupertino_icons: ^1.0.2
-  flutter_social_button: ^1.1.4
   url_launcher: ^6.1.5
   flutter_svg: ^1.1.1+1
   google_fonts: ^3.0.1
@@ -26,7 +24,6 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
-
   uses-material-design: true
   assets:
     - assets/
