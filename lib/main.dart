@@ -3,6 +3,7 @@ import 'package:delarosca/body/body.dart';
 import 'package:delarosca/footer/footer.dart';
 import 'package:delarosca/header/header.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 // TODO:
 // phone and email icon
@@ -10,8 +11,6 @@ import 'package:flutter/material.dart';
 // button links
 // construction page for blog
 // fix header photo
-
-
 
 void main() {
   runApp(const Delarosca());
@@ -55,13 +54,29 @@ class Delarosca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: _nameOfSite,
-        theme: ThemeData(
-          primaryColor: Colors.black87,
-          // scaffoldBackgroundColor: Colors.black87,
-        ),
-        home: website(),
+      debugShowCheckedModeBanner: false,
+      title: _nameOfSite,
+      theme: ThemeData(
+        primaryColor: Colors.black87,
+        // scaffoldBackgroundColor: Colors.black87,
+      ),
+      home: website(),
+      builder: (context, child) => ResponsiveWrapper.builder(
+        website(),
+        // background: ClampingScrollWrapper.builder(context, widget!),
+        // maxWidth: 1200,
+        // minWidth: 480,
+        defaultScale: true,
+        breakpoints: const [
+          ResponsiveBreakpoint.resize(580, name: MOBILE), // resize
+          ResponsiveBreakpoint.resize(850, name: TABLET), // autoscale
+          ResponsiveBreakpoint.resize(1120, name: "FOOTER"), // resize
+          ResponsiveBreakpoint.resize(1150, name: "HEADER"),
+          ResponsiveBreakpoint.resize(1200, name: DESKTOP), // resize
+          // ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+        ],
+      ),
+      // initialRoute: "/",
     );
   }
 }

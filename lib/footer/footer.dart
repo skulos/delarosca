@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:delarosca/copyright/copyright.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final Uri _facebookURL =
@@ -36,11 +37,12 @@ const String _contactText = """sanet@delarosca.co.za
 const String phoneNumber = " +27 71 470 6950";
 const String emailAddress = " sanet@delarosca.co.za";
 
-const String _addressText = """118 Arcadia Street, Malmesbury,
+const String _addressText = """131 Voortrekker Rd, Malmesbury,
 Western Cape, 7300""";
 
-const String _tradingText = """Monday - Saturday: 08h00 - 17h00
-Sunday: 08h00 - 15h00""";
+const String _tradingText = """Monday - Friday: 09h00 - 17h00
+Saturday: 09h00 - 12h00 
+Sunday: Closed""";
 
 class Footer extends StatelessWidget {
   Widget phone() {
@@ -162,23 +164,46 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black54,
-      height: 200,
+      // height: 200,
       padding: const EdgeInsetsDirectional.only(top: 20),
       child: Column(
         children: [
-          Table(
+          // Table(
+          //   children: [
+          //     TableRow(
+          //       children: [
+          //         // footerSection(_contactHeader, _contactText),
+          //         _footerContactUsSection(),
+          //         footerSection(_addressHeader, _addressText),
+          //         footerSection(_tradingHeader, _tradingText),
+          //         _footerSectionIcon(_followHeader),
+          //       ],
+          //     ),
+          //   ],
+          // ),
+          ResponsiveRowColumn(
+            // Layout
+            layout: ResponsiveWrapper.of(context).isSmallerThan("FOOTER")
+                ? ResponsiveRowColumnType.COLUMN
+                : ResponsiveRowColumnType.ROW,
+
+            // Axis
+            rowMainAxisAlignment: MainAxisAlignment.center,
+            rowCrossAxisAlignment: CrossAxisAlignment.start,
+            columnMainAxisAlignment: MainAxisAlignment.center,
+            columnCrossAxisAlignment: CrossAxisAlignment.center,
+
+            // Children
             children: [
-              TableRow(
-                children: [
-                  // footerSection(_contactHeader, _contactText),
-                  _footerContactUsSection(),
-                  footerSection(_addressHeader, _addressText),
-                  footerSection(_tradingHeader, _tradingText),
-                  _footerSectionIcon(_followHeader),
-                ],
-              ),
+              ResponsiveRowColumnItem(child: _footerContactUsSection()),
+              ResponsiveRowColumnItem(
+                  child: footerSection(_addressHeader, _addressText)),
+              ResponsiveRowColumnItem(
+                  child: footerSection(_tradingHeader, _tradingText)),
+              ResponsiveRowColumnItem(child: _footerSectionIcon(_followHeader)),
             ],
           ),
+
           const SizedBox(height: 20),
           Copyright(),
         ],
